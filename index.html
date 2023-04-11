@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<title>Calculadora</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <style>
+      .calculadora {
+        margin-top: 40px;
+        border: solid 2px #000;
+        padding: 20px;
+        background-color: #bbbbbb;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px #000;
+      }
+
+      .btn {
+        width: 60px;
+        height: 50px;
+        margin: 5px;
+        box-shadow: 2px 2px 2px #000;
+      }
+
+      .clear {
+        width: 130px;
+      }
+
+      .enter {
+        height: 110px;
+      }
+
+      .zero {
+        width: 130px;
+      }
+
+      .resultado {
+        text-align: right;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: solid 1px #000;
+        box-shadow: 2px 2px 2px #000;
+      }
+
+    </style>
+	</head>
+
+  <body style="background: #252121">
+
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <br/>
+
+          <div class="calculadora">
+            <input id="resultado" type="text" class="form-control resultado" placeholder="0" disabled="disabled" />
+            
+            <div class="row">
+              <button value="C" onclick="limpar()" type="button" class="btn btn-danger btn-lg font-weight-light">C</button>
+              <button value="del" onclick="deletar()" type="button" class="btn btn-warning btn-lg font-weight-light">Del</button>
+              <button value="/" onclick="inserir('/')" type="button" class="btn btn-dark btn-lg font-weight-light">/</button>
+              <button value="*" onclick="inserir('*')" type="button" class="btn btn-dark btn-lg font-weight-light">x</button>
+            </div>
+
+            <div class="row">
+              <button value="7" onclick="inserir(7)" type="button" class="btn btn-dark btn-lg font-weight-light">7</button>
+              <button value="8" onclick="inserir(8)" type="button" class="btn btn-dark btn-lg font-weight-light">8</button>
+              <button value="9" onclick="inserir(9)" type="button" class="btn btn-dark btn-lg font-weight-light">9</button>
+              <button value="-" onclick="inserir('-')" type="button" class="btn btn-dark btn-lg font-weight-light">-</button>
+            </div>
+            
+            <div class="row">
+              <button value="4" onclick="inserir(4)" type="button" class="btn btn-dark btn-lg font-weight-light">4</button>
+              <button value="5" onclick="inserir(5)" type="button" class="btn btn-dark btn-lg font-weight-light">5</button>
+              <button value="6" onclick="inserir(6)" type="button" class="btn btn-dark btn-lg font-weight-light">6</button>
+              <button value="+" onclick="inserir('+')" type="button" class="btn btn-dark btn-lg font-weight-light">+</button>
+            </div>
+
+            <div class="row">
+              <button value="1" onclick="inserir(1)" type="button" class="btn btn-dark btn-lg font-weight-light">1</button>
+              <button value="2" onclick="inserir(2)" type="button" class="btn btn-dark btn-lg font-weight-light">2</button>
+              <button value="3" onclick="inserir(3)" type="button" class="btn btn-dark btn-lg font-weight-light">3</button>
+              <button value="=" onclick="total()" type="button" class="btn btn-success btn-lg enter">=</button>
+            </div>
+
+            <div class="row" style="margin-top: -60px">
+              <button value="0" onclick="inserir(0)"type="button" class="btn btn-dark zero btn-lg font-weight-light">0</button>
+              <button value="." onclick="inserir('.')" type="button" class="btn btn-dark btn-lg font-weight-light">.</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>    
+
+    <script>
+      function limpar(){
+        document.getElementById('resultado').value = '';
+      }
+      function deletar(){
+        var expressao = document.getElementById('resultado').value;
+        document.getElementById('resultado').value = expressao.substring(0 , expressao.length-1);
+      }
+      function inserir(valor){
+        if (document.getElementById('resultado').value.length < 14){
+          document.getElementById('resultado').value = document.getElementById("resultado").value + valor;
+        }
+      }
+      function total(){
+        var result = document.getElementById('resultado').value;
+        if(result){
+          document.getElementById('resultado').value = eval(result);
+        }
+      }
+    </script>
+
+  </body>	
+</html>
